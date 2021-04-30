@@ -1,0 +1,106 @@
+<meta charset="UTF-8">
+
+<input/>
+<button>Compare com o meu segredo!</button>
+//botão do html onde o usuário irá inserir o número.
+
+<script>
+
+	function sorteia() { 
+//função que vai retornar o número sorteado aleatóriamente.
+		return Math.round(Math.random()*10);
+	}
+
+	function sorteiaNumeros(quantidade){ 
+//função que vai definir os três (ou quantos vc definir) números sorteados e quais são eles;
+//quantidade é o número de números sorteados.
+
+		var segredos = [];
+		//array, a boa prática é colocar a variável no plural.
+
+		var numero = 1; 
+		//contador, para ajudar a saber quantos números eu já sorteei.
+
+		while(numero <= quantidade){
+			//enquanto o contador for menor ou igual <= a quantidade de números que precisam ser sorteados esse laço vai rodar.
+			
+			//Para evitar repetições nos números aleatórios:
+			var numeroAleatorio = sorteia(); 
+			//a função sorteia() é a variavel numeroAleatorio, você aqui sorteia um número aleatório.
+			var achou = false; 
+			//achou é falso inicialmente pq ele ainda não foi encontrado na lista de segredos; por que ainda não verifiquei ele na lista de números gerados
+			
+			if(numeroAleatorio !== 0){ 
+			//o número sorteado tem que ser diferente !== de zero!
+
+				for(var posicao = 0; posicao< segredos.length; posicao++){
+
+					if(segredos[posicao] == numeroAleatorio){
+					//se, o número nessa posição do array for igual a algum número já existente
+					achou = true; 
+					//ou seja achou é verdadeiro, existe um número igual. Então achou recebe = true.
+					break; 
+					//para de rodar pq o número que foi gerado é igual ao que ja existe.
+					}
+				}
+
+				if(achou == false){ 
+				//se o númeroAleatorio não é igual a nenhum outro que já tem, achou é falso, ento o número encontrado será empurrado para dentro de segredos; essa comparação é feita pelo ==.
+				segredos.push(numeroAleatorio); 
+				//a função push "empurra" o número pra dentro do array;
+				numero++; 
+				//o incremento só vai ser realizado se os números encontrados forem diferentes dos que já existem ára que assim seja encontrado o número certo de númeors sorteados.
+				}
+
+			}
+
+		}
+
+		return segredos; 
+		//retorna a lista do números sorteados.
+	}
+
+	var segredos = sorteiaNumeros(3); 
+
+	console.log(segredos);
+
+	var input = document.querySelector("input"); 
+	//este comando quarySelector pega a informação do input no mundo html
+	input.focus();
+	//dá destaque no botão assim que a página é recarregada
+	
+	function verifica(){
+
+		var achou = false; 
+		//essa variável vai ser comparada se vc acertar ou errar o chute. Se for true, vc acertou e o código vai ser quebrado (break), se você errou achou == false (a variável é igual a false), exibe o alert você errou como determinado pelo if.
+		//nesse for abaixo, posição começa o 0, por que a primeira posição de um array é designado pelo zero.
+		//segredos.length vai chamar o tamanho do array.
+
+		for(var posicao = 0; posicao < segredos.length; posicao++){
+		//nesse if o input.value ou seja, o valor inserido no botão do mundo html é comparado ao array em cada posição que é chamado pelo [].
+			if(input.value == segredos[posicao]){
+
+			alert("Você acertou!");
+			achou = true; 
+			//se acertou, o código é quebrado;
+			break;
+			} 
+		}
+
+		if(achou == false){
+
+			alert("Você Errou!!!");
+		}
+
+		input.value = ""; 
+		//limpa a caixa inserindo uma string vazia.
+		input.focus(); 
+		//deixa a caixa em destaque.
+	}
+
+	var button = document.querySelector("button");
+	button.onclick = verifica; 
+	//quando vc clicar, a função verifica vai ser chamada.
+	// verifica sem () é diferente de verifica(), com parenteses executa automaticamente a função. Sem o parentesis, significa que vc está guardando o código.
+
+</script> 
