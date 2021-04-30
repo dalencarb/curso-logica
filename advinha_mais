@@ -40,7 +40,7 @@
 					achou = true; 
 					//ou seja achou é verdadeiro, existe um número igual. Então achou recebe = true.
 					break; 
-					//o código é quebrado, para pq o número que foi gerado é igual ao que ja existe.
+					//o código é quebrado, para pq o número que foi gerado é igual ao que já existe.
 					}
 				}
 
@@ -51,7 +51,7 @@
 				//a função push "empurra" o número pra dentro do array;
 				numero++; 
 				//o incremento só vai ser realizado se os números encontrados forem diferentes dos que já existem;
- 				//Dessa foma é encontrado o número certo de elementos sorteados.
+ 				//Dessa forma é encontrado o número certo de elementos sorteados.
 				}
 
 			}
@@ -104,6 +104,6 @@
 	var button = document.querySelector("button");
 	button.onclick = verifica; 
 	//quando o usuário clicar, a função verifica vai ser chamada.
-	// verifica sem () é diferente de verifica(), com parenteses executa automaticamente a função. Sem o parentesis, significa que vc está guardando o código.
+	// verifica sem () é diferente de verifica(), com parênteses executa automaticamente a função. Sem o parêntesis, significa que vc está guardando o código.
 
-</script> 
+</script>
